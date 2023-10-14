@@ -21,7 +21,9 @@ if [[ ! -v AUTH_HEADERS ]]; then
   fi
 fi
 
-: "${IP:=$(curl ifconfig.co)}"
+IP_FETCH_ADDRESS="${IP_FETCH_ADDRESS:-"https://ifconfig.me"}"
+
+: "${IP:=$(curl "$IP_FETCH_ADDRESS")}"
 : "${PROXIED:=false}"
 echo "Using IP: $IP" 1>&2
 
